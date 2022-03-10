@@ -1,0 +1,8 @@
+#imprimir numeros enteros del 1 al 9 
+def createList(n):
+    lst = []
+    for i in range(n+1):
+        lst.append(i)
+    return(lst)
+
+print(createList(10)) 
