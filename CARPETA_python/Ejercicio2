@@ -1,0 +1,82 @@
+#Haz un programa en Python que pida datos del alumnado y muestre estadísticas de cada cual y estadísticas de la clase en general. 
+#Pedir datos de un alumno/a. Pedir nombre, edad, si es repetidor o no y las 7 notas obtenidas en la primera evaluación. 
+#No se permitirá introducir notas negativas o mayores de 10 
+(no hay que controlar que se introduzcan letras).
+nota_para_aprobar = 7
+cantidad_notas = 7
+respuesta = "s"
+total_alumnos = 0
+total_suspendidas = 0
+total_aprobadas = 0
+total_alumnos_todo_aprobado = 0
+total_alumnos_alguna_suspendida = 0
+suma_notas_medias_repetidores = 0
+suma_notas_medias_no_repetidores = 0
+alumno_nota_media_mas_alta = ""
+nota_media_mas_alta = 0
+total_repetidores = 0
+total_no_repetidores = 0
+while respuesta.lower() == "s":
+    nombre = input("Nombre: ")
+    edad = input("Edad: ")
+    repetidor = input("Repetidor: [s/n] ")
+    nota_maxima = 0
+    nota_minima = 11
+    suma_notas = 0
+    suspendidas = 0
+    aprobadas = 0
+    nota = -1
+    for i in range(cantidad_notas):
+        while nota < 0 or nota > 10:
+            nota = float(input("Ingrese la nota #" + str(i+1) + ": "))
+        suma_notas += nota
+        if nota > nota_maxima:
+            nota_maxima = nota
+        if nota < nota_minima:
+            nota_minima = nota
+
+        if nota < nota_para_aprobar:
+            suspendidas += 1
+            total_suspendidas += 1
+        else:
+            aprobadas += 1
+            total_aprobadas += 1
+        nota = -1
+    total_alumnos += 1
+    nota_media = suma_notas / cantidad_notas
+    if nota_media > nota_media_mas_alta:
+        alumno_nota_media_mas_alta = nombre
+        nota_media_mas_alta = nota_media
+    if suspendidas <= 0:
+        total_alumnos_todo_aprobado += 1
+    else:
+        total_alumnos_alguna_suspendida += 1
+    if repetidor.lower() == "s":
+        suma_notas_medias_repetidores += nota_media
+        total_repetidores += 1
+    else:
+        suma_notas_medias_no_repetidores += nota_media
+        total_no_repetidores += 1
+    print("Estadística de " + nombre)
+    if repetidor.lower() == "s":
+        print("-Repetidor: sí")
+    else:
+        print("-Repetidor: no")
+    print("-Nota máxima: " + str(nota_maxima))
+    print("-Nota mínima: " + str(nota_minima))
+    valor_equivalente = ""
+    if nota_media < 5:
+        valor_equivalente = "Insuficiente"
+    elif nota_media < 6:
+        valor_equivalente = "Suficiente"
+    elif nota_media < 7:
+        valor_equivalente = "Bien"
+    elif nota_media < 8:
+        valor_equivalente = "Notable"
+    else:
+        valor_equivalente = "Sobresaliente"
+
+    print("-Nota media: " + str(nota_media) + " ("+valor_equivalente+")")
+    print("-Cuántas suspendidas: " + str(suspendidas))
+    print("-Cuántas aprobadas: " + str(aprobadas))
+    respuesta = input("Se van a introducir más alumnos? [s/n] ")
