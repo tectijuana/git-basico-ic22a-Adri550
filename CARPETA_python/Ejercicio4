@@ -1,0 +1,8 @@
+#Imprimir numeros pares del 2 al 48
+numeros = input('Introduce una cadena separada por espacios: ').split()
+pares = []
+
+for numero in numeros:
+    if int(numero) % 2 == 0:
+        pares = numero
+        print(pares)
