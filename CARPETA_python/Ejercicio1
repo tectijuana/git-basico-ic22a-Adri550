@@ -1,1 +1,9 @@
+#Imprimir los números del 9 al 43
+list = []
+calc = 9
 
+while int(calc) < 43:
+    list.append(calc)
+    calc = int(calc) + 1
+
+print(list)
