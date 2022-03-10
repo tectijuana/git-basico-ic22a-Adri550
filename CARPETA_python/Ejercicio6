@@ -1,0 +1,6 @@
+#introducir si es "Par" o "impar"
+num = int(input('introduzca un numero: '))
+if num % 2 == 0;
+    print('Par')
+ else:
+    print('Impar')
