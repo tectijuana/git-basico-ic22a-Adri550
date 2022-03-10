@@ -1,0 +1,5 @@
+#Imprrimir una tabla de multiplicar de cualquier número
+numero = int (input("introduce numero")):
+    for i in range(0,11)
+    resultado = i*numero
+    print(("%d  x %d = %d") % (numero,i,resultado))
